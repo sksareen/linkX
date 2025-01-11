@@ -1,0 +1,215 @@
+/* NPM Docs Theme */
+:root {
+    --bg-color: #ffffff;
+    --header-bg: #231f20;
+    --border-color: #e7e7e7;
+    --text-color: #000000;
+    --text-secondary: #444444;
+    --link-color: #fb3e44;
+    --link-hover: #c93d42;
+    --button-color: #231f20;
+    --button-hover: #383838;
+    --code-bg: #fafafa;
+    --tag-bg: #f2f2f2;
+}
+
+body {
+    font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.header {
+    background-color: var(--header-bg);
+    padding: 20px;
+    color: white;
+}
+
+.header h1 {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 28px;
+    font-weight: 600;
+    color: white;
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.login-box {
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-color);
+    padding: 32px;
+    text-align: center;
+    margin: 32px 0;
+    border-radius: 4px;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--button-color);
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.button:hover {
+    background-color: var(--button-hover);
+}
+
+.dashboard {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 32px;
+    border-radius: 4px;
+}
+
+.user-info {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-form {
+    background-color: var(--code-bg);
+    padding: 24px;
+    margin-bottom: 32px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.link-form h2 {
+    margin: 0 0 24px 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+input, select {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.2s ease;
+}
+
+input:focus, select:focus {
+    border-color: var(--link-color);
+    outline: none;
+}
+
+label {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.links-container {
+    background-color: var(--bg-color);
+    padding: 24px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.links-container h2 {
+    margin: 0 0 24px 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.link-item {
+    border: 1px solid var(--border-color);
+    margin-bottom: 16px;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: var(--code-bg);
+}
+
+.link-item h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.link-item p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.link-item a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link-item a:hover {
+    color: var(--link-hover);
+}
+
+.link-type {
+    display: inline-block;
+    padding: 4px 8px;
+    background-color: var(--tag-bg);
+    color: var(--text-secondary);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.share-section {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-color);
+}
+
+.share-section h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 24px 0;
+}
+
+.profile-links {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 32px;
+}
+
+/* NPM-specific code styling */
+code {
+    background-color: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: Monaco, Consolas, "Lucida Console", monospace;
+    font-size: 14px;
+} 

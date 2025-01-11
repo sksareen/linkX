@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ link.title }}</title>
+    
+    <!-- X (Twitter) Card Meta Tags -->
+    <meta name="twitter:card" content="player">
+    <meta name="twitter:title" content="{{ link.title }}">
+    <meta name="twitter:description" content="{{ link.description }}">
+    {% if link.demo_url %}
+        {% if 'youtube.com' in link.demo_url or 'youtu.be' in link.demo_url %}
+            {% set video_id = link.demo_url.split('v=')[-1] if 'v=' in link.demo_url else link.demo_url.split('/')[-1] %}
+            <meta name="twitter:player" content="https://www.youtube.com/embed/{{ video_id }}">
+        {% elif 'vimeo.com' in link.demo_url %}
+            {% set video_id = link.demo_url.split('/')[-1] %}
+            <meta name="twitter:player" content="https://player.vimeo.com/video/{{ video_id }}">
+        {% else %}
+            <meta name="twitter:player" content="{{ link.demo_url }}">
+        {% endif %}
+        <meta name="twitter:player:width" content="1280">
+        <meta name="twitter:player:height" content="720">
+    {% endif %}
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{{ link.title }}">
+    <meta property="og:description" content="{{ link.description }}">
+    <meta property="og:type" content="website">
+    {% if link.demo_url %}
+        <meta property="og:video" content="{{ link.demo_url }}">
+        <meta property="og:video:type" content="text/html">
+        <meta property="og:video:width" content="1280">
+        <meta property="og:video:height" content="720">
+    {% endif %}
+</head>
+<body>
+    <div class="content">
+        <h1>{{ link.title }}</h1>
+        <p>{{ link.description }}</p>
+        
+        {% if link.demo_url %}
+            <div class="video-container">
+                {% if 'youtube.com' in link.demo_url or 'youtu.be' in link.demo_url %}
+                    {% set video_id = link.demo_url.split('v=')[-1] if 'v=' in link.demo_url else link.demo_url.split('/')[-1] %}
+                    <iframe 
+                        width="1280" 
+                        height="720" 
+                        src="https://www.youtube.com/embed/{{ video_id }}"
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+                {% elif 'vimeo.com' in link.demo_url %}
+                    {% set video_id = link.demo_url.split('/')[-1] %}
+                    <iframe 
+                        width="1280" 
+                        height="720" 
+                        src="https://player.vimeo.com/video/{{ video_id }}"
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+                {% elif '/uploads/' in link.demo_url %}
+                    <video 
+                        width="1280" 
+                        height="720" 
+                        controls
+                        playsinline
+                        preload="metadata">
+                        <source src="{{ link.demo_url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                {% else %}
+                    <iframe 
+                        width="1280" 
+                        height="720" 
+                        src="{{ link.demo_url }}" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+                {% endif %}
+            </div>
+        {% endif %}
+        
+        <div class="links">
+            {% if link.github_url %}
+                <a href="{{ link.github_url }}" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+            {% endif %}
+            
+            {% if link.webapp_url %}
+                <a href="{{ link.webapp_url }}" target="_blank" rel="noopener noreferrer">Visit Web App</a>
+            {% endif %}
+        </div>
+    </div>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.5;
+            background: #0d1117;
+            color: #c9d1d9;
+        }
+        .content {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin: 20px 0;
+            background: #000;
+            border-radius: 8px;
+        }
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+        .links {
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+        }
+        .links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #238636;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+        .links a:hover {
+            background: #2ea043;
+        }
+        h1 {
+            margin: 0 0 16px 0;
+            font-size: 24px;
+            color: #ffffff;
+        }
+        p {
+            margin: 0 0 20px 0;
+            font-size: 16px;
+            color: #8b949e;
+        }
+    </style>
+</body>
+</html> 

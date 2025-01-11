@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkX Dashboard</title>
+    <link id="theme-style" rel="stylesheet" href="{{ url_for('static', filename='themes/github-dark.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>LinkX Dashboard</h1>
+        <div class="user-info">
+            <p>Welcome, {{ user.username }}</p>
+            <a href="{{ url_for('logout') }}" class="button">Logout</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="link-form">
+            <h2>Add New Link</h2>
+            <form action="{{ url_for('links') }}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Project Title</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Project Description</label>
+                    <textarea id="description" name="description" rows="3" required></textarea>
+                </div>
+                
+                <div class="video-input form-group">
+                    <label>Demo Video</label>
+                    <input type="url" id="demo_url" name="demo_url" placeholder="Video URL (YouTube, Vimeo, etc.)">
+                    <div class="or-divider">OR</div>
+                    <input type="file" id="video_file" name="video_file" accept="video/*" aria-label="Upload video file">
+                    <p class="help-text">Upload a video or provide a URL</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="github_url">GitHub Repository URL</label>
+                    <input type="url" id="github_url" name="github_url" placeholder="https://github.com/username/repo">
+                </div>
+
+                <div class="form-group">
+                    <label for="webapp_url">Live Web App URL</label>
+                    <input type="url" id="webapp_url" name="webapp_url" placeholder="https://your-app.com">
+                </div>
+
+                <button type="submit" class="button">Add Link</button>
+            </form>
+        </div>
+
+        <div class="links-container">
+            <h2>Your Links</h2>
+            <div id="links-list">
+                <!-- Links will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html> 
